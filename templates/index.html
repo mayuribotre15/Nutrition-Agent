@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NutriGuide — Nutrition AI powered by IBM Granite</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">🥦</span>
+        <div class="logo-text">
+          <span class="logo-title">NutriGuide</span>
+          <span class="logo-sub">Powered by IBM Granite · WatsonX</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="resetBtn" class="btn-secondary" title="Start a new plan">🔄 New Plan</button>
+        <span class="model-badge">ibm/granite-3-3-8b-instruct</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MAIN LAYOUT ===== -->
+  <main class="app-main">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <h3>📊 Your Profile</h3>
+        <ul class="profile-list" id="profileList">
+          <li class="profile-item muted">Complete the chat to see your profile here.</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>💡 Progress</h3>
+        <div class="progress-wrap">
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" id="progressBar" style="width: 0%"></div>
+          </div>
+          <span class="progress-label" id="progressLabel">0%</span>
+        </div>
+        <p class="progress-stage" id="stageLabel">Waiting to start…</p>
+      </div>
+
+      <div class="sidebar-card tips-card">
+        <h3>✅ AI Ethics & Safety</h3>
+        <ul class="tips-list">
+          <li>Evidence-based recommendations</li>
+          <li>Respectful &amp; inclusive tone</li>
+          <li>Guardrails for harmful content</li>
+          <li>Always recommends professional consultation</li>
+          <li>Transparent about AI limitations</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-card disclaimer-card">
+        <h3>⚕️ Disclaimer</h3>
+        <p>This AI is for informational purposes only and does <strong>not</strong> replace professional medical or dietary advice. Always consult a qualified healthcare provider.</p>
+      </div>
+    </aside>
+
+    <!-- Chat Panel -->
+    <section class="chat-panel">
+      <div class="chat-messages" id="chatMessages">
+        <!-- Messages rendered here -->
+      </div>
+
+      <!-- Typing indicator -->
+      <div class="typing-indicator hidden" id="typingIndicator">
+        <span></span><span></span><span></span>
+        <em>NutriGuide is thinking…</em>
+      </div>
+
+      <!-- Input area -->
+      <div class="chat-input-area">
+        <textarea
+          id="userInput"
+          placeholder="Type your message here and press Enter or click Send…"
+          rows="2"
+          disabled
+        ></textarea>
+        <button id="sendBtn" class="btn-primary" disabled>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== QUICK REPLY CHIPS ===== -->
+  <div class="quick-chips hidden" id="quickChips">
+    <button class="chip" data-msg="Vegetarian">🥦 Vegetarian</button>
+    <button class="chip" data-msg="Non-Vegetarian">🥩 Non-Vegetarian</button>
+    <button class="chip" data-msg="Vegan">🌱 Vegan</button>
+    <button class="chip" data-msg="Pescatarian">🐟 Pescatarian</button>
+    <button class="chip" data-msg="Flexitarian">🍽️ Flexitarian</button>
+  </div>
+
+  <!-- ===== QA SUGGESTION CHIPS ===== -->
+  <div class="quick-chips hidden" id="qaChips">
+    <button class="chip" data-msg="What should I eat for breakfast?">🍳 Breakfast ideas</button>
+    <button class="chip" data-msg="How much water should I drink daily?">💧 Hydration tips</button>
+    <button class="chip" data-msg="What foods should I avoid?">🚫 Foods to avoid</button>
+    <button class="chip" data-msg="Give me a healthy snack idea">🥜 Snack ideas</button>
+    <button class="chip" data-msg="How can I manage my condition with diet?">🏥 Manage condition</button>
+  </div>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
